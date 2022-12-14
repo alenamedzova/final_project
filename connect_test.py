@@ -1,7 +1,7 @@
 import psycopg2
 
 # db_host = "127.0.0.1"
-db_host = "localhost"
+db_host = "10.107.0.98"
 db_port = 5432
 db_name = "etoro"
 db_username = "postgres"
