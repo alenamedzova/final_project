@@ -3,11 +3,11 @@
 {% load static%}
 
 {% block title %}
-Chatterbox - profile {{ profile.user.username }}
+Tester - profile {{ profile.user.username }}
 {% endblock %}
 
 {% block header %}
-Chatterbox - profile {{ profile.user.username }}
+Tester - profile {{ profile.user.username }}
 {% endblock %}
 
 {% block content %}
@@ -47,7 +47,7 @@ Chatterbox - profile {{ profile.user.username }}
 
             {% if not profile.birth_date_private %}
                 {% if profile.birth_date == None %}
-                    Birth date: unknown <br>
+                    Birth date: Not Given <br>
                 {% else %}
                     Birth date: {{ profile.birth_date }} <br>
                 {% endif %}
