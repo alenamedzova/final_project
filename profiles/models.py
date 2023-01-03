@@ -8,9 +8,10 @@ class Profile(models.Model):
     avatar = models.ImageField(blank=True)
     about_me = models.TextField(max_length=500, blank=True)
     birth_date = models.DateField(null=True, blank=True)
-    signed_up = models.DateField(auto_now_add=True)   # datum vytvoření profilu # todo smazat
-    last_online = models.DateField(auto_now=True)     # datum, kdy byl naposledy online
+
     score = models.FloatField(null=True)
+    last_done_test = models.DateField(null=True)
+    test_count = models.IntegerField(null=True)
 
     first_name_private = models.BooleanField(default=False, null=False)
     last_name_private = models.BooleanField(default=False, null=False)

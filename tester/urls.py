@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from tester_services.views import *
+
 # for images
 from django.conf import settings
 from django.conf.urls.static import static
@@ -24,6 +26,7 @@ import profiles.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', home, name='home'),
 
     # accounts app
     path('accounts/', include('accounts.urls')),  # signup
@@ -34,4 +37,4 @@ urlpatterns = [
     path('create_profile/', profiles.views.create_profile, name='create_profile'),
     path('edit_profile/', profiles.views.edit_profile, name='edit_profile'),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

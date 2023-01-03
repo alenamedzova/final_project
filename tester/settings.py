@@ -37,8 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # added apps
+    'tester_services',
     'accounts',
     'profiles',
+    'test_generator',
+
 ]
 
 MIDDLEWARE = [
