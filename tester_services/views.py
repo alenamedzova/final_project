@@ -3,7 +3,6 @@ from django.shortcuts import render
 
 # Create your views here.
 def home(request):
-    # return HttpResponse("Home")
     if request.user.is_authenticated:
         status = "You're logged in."
     else:
