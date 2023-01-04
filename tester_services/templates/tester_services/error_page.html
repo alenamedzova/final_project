@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block title %} Tester - Error Page {% endblock %}
+{% block header %} Tester - Error Page {% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  {{ error_message }}
+{% endif %}
+{% endblock %}
