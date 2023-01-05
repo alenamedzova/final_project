@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from tester_services.models import *
+from test_generator.models import *
 
 
 # Create your views here.
@@ -14,4 +14,4 @@ def home(request):
 
 
 def testujeme(request):
-    thema = Theme.objects.create(theme_name="Biology")
+    thema = Themes.objects.create(theme_name="Biology")

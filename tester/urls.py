@@ -26,7 +26,7 @@ import profiles.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', testujeme, name='home'),
+    path('', home, name='home'),
 
     # accounts app
     path('accounts/', include('accounts.urls')),  # signup
