@@ -15,3 +15,11 @@ def home(request):
 
 def testujeme(request):
     thema = Themes.objects.create(theme_name="Biology")
+
+
+def my_tests(request):
+    user = request.user
+    tests = GTest.objects.filter(user=user)
+    context = {'my_tests': tests}
+    return render(request, 'tester_services/my_tests.html', context)
+

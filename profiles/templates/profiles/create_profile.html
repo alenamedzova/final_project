@@ -14,9 +14,6 @@ Tester - Create new profile
   <div class="create-profile">
     <form enctype="multipart/form-data" method="post">
       {% csrf_token %}
-      <label for="avatar">Avatar:</label>
-      <input type="file" name="avatar" id="avatar" accept="image/*"> <br>
-
       <label for="first_name">First name:</label>
       <input type="text" name="first_name" id="first_name" value="{{ request.user.first_name }}"> <br>
 
@@ -25,12 +22,6 @@ Tester - Create new profile
 
       <label for="email">E-mail:</label>
       <input type="text" name="email" id="email" value="{{ request.user.email }}"> <br>
-
-      <label for="about_me">About me:</label>
-      <input type="text" name="about_me" id="about_me"> <br>
-
-      <label for="birth_date">Birth date:</label>
-      <input type="date" name="birth_date" id="birth_date"> <br>
 
       <button type="submit">Create</button>
     </form>

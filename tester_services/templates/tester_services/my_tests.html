@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block title %} Tester - list of my tests {% endblock %}
+{% block header %} Tester - list of my tests {% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <h2>List of my tests:</h2>
+  <ul>
+    {% for test in my_tests %}
+    <li>
+      <a href="{% url 'generated_test' test.id %}"> {{ test.question_count }} questions </a>
+    </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+{% endblock %}
