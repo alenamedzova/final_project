@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from tester_services.views import *
+from test_generator.views import *
 
 # for images
 from django.conf import settings
@@ -38,5 +39,10 @@ urlpatterns = [
     path('edit_profile/', profiles.views.edit_profile, name='edit_profile'),
 
     path('my_tests/', my_tests, name='my_tests'),
+
+    # test_generator app
+    path('available_tests/', available_tests, name='available_tests'),
+    path('create_test/<int:theme>/', create_test, name='create_test'),
+    path('generated_test/<int:pk>', generated_test, name='generated_test')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

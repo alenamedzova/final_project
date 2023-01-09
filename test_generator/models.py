@@ -46,6 +46,8 @@ class GTest(models.Model):
     last_answered_q = models.IntegerField(null=True)
     done = models.BooleanField(null=False)
 
+    th_name_id = models.IntegerField(null=False)  # aby sme vedeli potom triediť otázky
+
     def __str__(self):
         return self.id
 

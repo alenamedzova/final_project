@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 from test_generator.models import *
 
@@ -13,10 +14,12 @@ def home(request):
     return render(request, "tester_services/home.html", context)
 
 
+# môže sa neskôr zmazať (def testujeme)
 def testujeme(request):
     thema = Themes.objects.create(theme_name="Biology")
 
 
+@login_required
 def my_tests(request):
     user = request.user
     tests = GTest.objects.filter(user=user)

@@ -5,9 +5,8 @@
         <li><a href="{% url 'home' %}">Home</a></li>
 
         {% if request.user.is_authenticated %}
-            <li><a href="">MyTests</a></li>
-            <li><a href="">CreateTest</a></li>
-            <li><a href="">Private_requests</a></li>
+            <li><a href="{% url 'my_tests' %}">MyTests</a></li>
+            <li><a href="{% url 'available_tests' %}">CreateTest</a></li>
             {% if user.profile.id %}
                 <li class="last-item"><a href="{% url 'profile' user.profile.id %}">{{ request.user.username }}</a></li>
             {% else %}
