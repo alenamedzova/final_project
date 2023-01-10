@@ -2,9 +2,22 @@
 
 {% load static %}
 
-{% block title %} Tester - {{ test.id }} - done: {{ test.done }} {% endblock %}
-{% block header %} Tester - {{ test.id }} - done: {{ test.done }} {% endblock %}
+{% block title %} Tester - Test id: {{ g_test.id }} - Theme: {{ g_test.th_name_id }}
+{% block header %} Tester - Test id: {{ g_test.id }} - Theme: {{ g_test.th_name_id }} - done: {{ g_test.done }} {% endblock %}
 
 {% block content %}
+
+<ul>
+    {% for question in questions %}
+    <li>
+      <p>{{ question[0] }} </p>
+      <p>{{ question[1]] }} </p>
+      {% for answer in question[2:] %}
+        <p>{{ answer[0] }}</p>
+        <p>{{ answer[1] }}</p>
+
+    </li>
+    {% endfor %}
+  </ul>
 
 {% endblock %}

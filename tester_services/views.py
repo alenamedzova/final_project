@@ -22,7 +22,7 @@ def testujeme(request):
 @login_required
 def my_tests(request):
     user = request.user
-    tests = GTest.objects.filter(user=user)
+    tests = GTest.objects.filter(user_id=user.id)
     context = {'my_tests': tests}
     return render(request, 'tester_services/my_tests.html', context)
 

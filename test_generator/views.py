@@ -55,13 +55,12 @@ def create_test(request, pk):
 
 
 def generated_test(request, pk):
-    pass
     g_test = GTest.objects.get(id=pk)
     answer_count = g_test.answer_count
     question_count = g_test.question_count
     th_name_id = g_test.th_name_id
 
-    original_test_questions = [TestQuestions.objects.get('tq_id').filter(th_name_id=pk)]
+    original_test_questions = [TestQuestions.objects.get('tq_id').filter(th_name_id=th_name_id)]
 
     for _ in range(question_count):
         new_question = random.choice(original_test_questions)
@@ -77,6 +76,38 @@ def generated_test(request, pk):
                 correct=False,
                 done=False,
             )
-            
-    context = {'test': g_test}
+
+    questions_g_test = GTestAnswers.objects.get('question_num_id').filter(gtest_id=pk)
+
+    answers_g_test = GTestAnswers.objects.get('letter_answer_id').filter(gtest_id=pk)
+    all_answers = []
+    set_of_answers = []
+    i = 1
+    for answer in answers_g_test:
+        if i < answer_count:
+            set_of_answers.append(answer)
+            i += 1
+        else:
+            set_of_answers.append(answer)
+            all_answers.append(set_of_answers)
+            i = 1
+            set_of_answers = []
+
+    j = 0
+    all_questions = []  # all_questions: [0]=q_number; [1]=q_body; [2][0] a_letter; [2][1]=a_body
+    part_answers = []
+    for question in questions_g_test:
+        q_number = question.question_num
+        q_body = question.question_body
+
+        for answer in all_answers[j]:
+            a_letter = answer.letter_answer
+            a_body = answer.body_answer
+            part_answers.append([a_letter, a_body])
+
+        all_questions.append([q_number, q_body, part_answers])
+        j += 1
+        part_answers = []
+
+    context = {'g_test': g_test, 'questions': all_questions}
     return render(request, "test_generator/generated_test", context)
