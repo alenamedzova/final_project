@@ -19,7 +19,7 @@ class TestQuestions(models.Model):
     question_body = models.JSONField(null=False)
     answer_count = models.SmallIntegerField(null=False)
     th_name_id = models.ForeignKey(Themes, on_delete=models.SET_NULL, null=True)
-    owner_username_id = models.ForeignKey(UserProfiles, on_delete=models.SET_NULL, null=True)
+    owner_username_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.tq_id
@@ -38,7 +38,7 @@ class TestAnswers(models.Model):
 
 class GTest(models.Model):
     id = models.BigAutoField(primary_key=True)
-    user_id = models.ForeignKey(UserProfiles, on_delete=models.SET_NULL, null=True)
+    user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     question_count = models.IntegerField(null=False)
     answer_count = models.IntegerField(null=False)
     test_score = models.FloatField(null=True)
