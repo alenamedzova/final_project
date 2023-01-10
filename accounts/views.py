@@ -3,6 +3,8 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.forms import UserCreationForm, get_user_model
 
+from profiles.models import UserProfiles
+
 
 # Create your views here.
 class SignUpForm(UserCreationForm):
@@ -17,3 +19,4 @@ class SignUpView(generic.CreateView):
     form_class = SignUpForm  # použijeme formulár definovaný vyššie
     success_url = reverse_lazy('login')  # kam nás to presmeruje, v prípade úspechu
     template_name = 'accounts/signup.html'  # použijeme tento template
+
