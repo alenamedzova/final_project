@@ -16,24 +16,24 @@ class Themes(models.Model):
 class TestQuestions(models.Model):
     tq_id = models.BigAutoField(primary_key=True)
     question_num = models.IntegerField(null=False)
-    question_body = models.JSONField(null=False)
+    question_body = models.CharField(max_length=360, null=False)
     answer_count = models.SmallIntegerField(null=False)
     th_name_id = models.ForeignKey(Themes, on_delete=models.SET_NULL, null=True)
     owner_username_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return self.tq_id
+        return str(self.tq_id)
 
 
 class TestAnswers(models.Model):
     id = models.BigAutoField(primary_key=True)
     question_num_id = models.ForeignKey(TestQuestions, on_delete=models.CASCADE, null=False)
     letter_answer = models.CharField(max_length=10, null=False)
-    body_answer = models.JSONField(null=False)
+    body_answer = models.CharField(max_length=360, null=False)
     correct = models.BooleanField(null=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 
 class GTest(models.Model):
@@ -49,7 +49,7 @@ class GTest(models.Model):
     th_name_id = models.IntegerField(null=True)  # aby sme vedeli potom triediť otázky
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 
 class GTestAnswers(models.Model):
@@ -61,4 +61,4 @@ class GTestAnswers(models.Model):
     done = models.BooleanField(null=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)

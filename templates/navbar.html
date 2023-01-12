@@ -7,7 +7,9 @@
         {% if request.user.is_authenticated %}
             <li><a href="{% url 'my_tests' %}">MyTests</a></li>
             <li><a href="{% url 'available_tests' %}">CreateTest</a></li>
-            <li class="last-item"><a href="{% url 'profile' user.profile.id %}">{{ request.user.username }}</a></li>
+
+            <li class="last-item"><a href="{% url 'profile' request.user.id %}">{{ request.user.username }}</a></li>
+
             <li class="last-item"><a href="{% url 'logout' %}">Logout</a></li>
         {% endif %}
         {% if not request.user.is_authenticated %}
